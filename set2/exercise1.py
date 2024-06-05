@@ -16,21 +16,21 @@ import platform
 
 # I think this will print "hello! Let's get started" by calling the print function.
 print("hello! Let's get started")  # it printed "hello! Let's get started"
-
+# I think this will print out what does this line do ?
 some_words = ["what", "does", "this", "line", "do", "?"]
-
+#it is telling the system to print each of the variables, printing one at a time then moving to the next variable.
 for word in some_words:
     print(word)
-
+#blurting everything that it said as a summary
 for x in some_words:
     print(x)
-
+#
 print(some_words)
-
+#will print some_words if the value is greater than 3, if lower it will not be responsive
 if len(some_words) > 3:
     print("some_words contains more than 3 words")
 
-
+#blurting out all the information about my platform and computer
 def usefulFunction():
     """
     You may want to look up what uname does before you guess

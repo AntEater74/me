@@ -6,6 +6,9 @@ Welcome to exercise 3 of set 2.
 Modify each function until the tests pass.
 """
 
+#
+from statistics import _Number
+
 
 def is_odd(a_number):
     """Return True if a_number is odd, and False if a_number is even.
@@ -18,14 +21,14 @@ def is_odd(a_number):
 
     So if a_number modulo two is zero, then it's even.
     """
-    return None
+    return a_number %4 == 1
 
 
 def fix_it(moves=True, should_move=True):
     """Decide what to do.
 
     Using the engineering flowchart (in week2 folder of the CODE1161-2019
-    repo engineeringFlowchart.png) for the rules, return the apropriate
+    repo engineeringFlowchart.png) for the rules, return the appropriate
     response to the input parameters.
     Use conditional statements: if, else, elif etc.
     This function should return either:
@@ -36,7 +39,10 @@ def fix_it(moves=True, should_move=True):
     Most people write this function with 4 return statements.
     As an extra challenge, see if you can get that down to three.
     """
-    return None
+    return print(does it move)
+print('does','it','move','?')
+if('moves=true')==is_odd(_Number)
+
 
 
 def loops_preview():

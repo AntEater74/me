@@ -1,0 +1,62 @@
+[
+  "1",
+  {
+    "of_total": 11,
+    "mark": 8,
+    "results": [
+      {
+        "value": 1,
+        "name": "Run a trace on your system details"
+      },
+      {
+        "value": 1,
+        "name": "check that Python and Requests are installed"
+      },
+      {
+        "value": 1,
+        "name": "Exercise1: Print 'Hello world!'"
+      },
+      {
+        "value": 1,
+        "name": "Lab book entry completed"
+      },
+      {
+        "value": 0,
+        "name": "Update your aboutMe.yml"
+      },
+      {
+        "value": 1,
+        "name": "requestsWorking.txt exists"
+      },
+      {
+        "value": 1,
+        "name": "checkID.json exists"
+      },
+      {
+        "value": 1,
+        "name": "You've forked the me repo"
+      },
+      {
+        "value": 0,
+        "name": "You've pushed your work to GitHub: requestsWorking.txt"
+      },
+      {
+        "value": 0,
+        "name": "You've pushed your work to GitHub: checkID.json"
+      },
+      {
+        "value": 1,
+        "name": "You've got a photo for your GitHub account"
+      }
+    ],
+    "week_number": 1
+  },
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10"
+]
