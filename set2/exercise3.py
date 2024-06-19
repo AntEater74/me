@@ -7,7 +7,7 @@ Modify each function until the tests pass.
 """
 
 #
-from statistics import _Number
+
 
 
 def is_odd(a_number):
@@ -39,11 +39,13 @@ def fix_it(moves=True, should_move=True):
     Most people write this function with 4 return statements.
     As an extra challenge, see if you can get that down to three.
     """
-    return print(does it move)
-print('does','it','move','?')
-if('moves=true')==is_odd(_Number)
-
-
+    if moves == should_move:
+        return "No Problem"
+    elif moves and not should_move:
+        return "WD-40"
+    elif not moves and should_move:
+        return "Duct Tape"
+    
 
 def loops_preview():
     """Make 8 poops.
@@ -52,10 +54,13 @@ def loops_preview():
     return a list of 8 items, each one a string with exacly one 💩 in it.
     E.g.: ['💩', '💩', '💩', '💩', '💩', '💩', '💩', '💩']
     """
-    choc_list = []
-    for i in range(8):
-        choc_list.append("💩")
-    return choc_list
+    def make_8_poops():
+    poops = []
+    for _ in range(8):
+        poops.append('💩')
+    return poops
+
+print(make_8_poops())
 
 
 def loops_1a():
@@ -65,7 +70,12 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    return None
+    def stars():
+        stars = []
+    for _ in range(10):
+        stars.append('*')
+    return stars
+    print(make_10_stars())
 
 
 def loops_1c(number_of_items=5, symbol="#"):
@@ -91,7 +101,7 @@ def loops_2_preview():
             ['💩', '💩', '💩', '💩'],
             ['💩', '💩', '💩', '💩'],
             ['💩', '💩', '💩', '💩'],
-          ]
+        
     """
     field = []
     for i in range(4):
