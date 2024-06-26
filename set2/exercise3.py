@@ -39,13 +39,25 @@ def fix_it(moves=True, should_move=True):
     Most people write this function with 4 return statements.
     As an extra challenge, see if you can get that down to three.
     """
-    if moves == should_move:
-        return "No Problem"
+
+    #moves = true
+    #not moves = false
+
+
+
+    #should_move = true
+    #not should_move = false
+
+    if moves and should_move:
+        return 'No Problem'
     elif moves and not should_move:
-        return "WD-40"
-    elif not moves and should_move:
         return "Duct Tape"
-    
+    elif not moves and should_move:
+        return "WD-40"
+    elif not moves and not should_move:
+        return "No Problem"
+
+
 
 def loops_preview():
     """Make 8 poops.
@@ -54,13 +66,13 @@ def loops_preview():
     return a list of 8 items, each one a string with exacly one 💩 in it.
     E.g.: ['💩', '💩', '💩', '💩', '💩', '💩', '💩', '💩']
     """
-    def make_8_poops():
+
     poops = []
     for _ in range(8):
         poops.append('💩')
-    return poops
 
-print(make_8_poops())
+    print(poops)
+    return poops
 
 
 def loops_1a():
@@ -70,12 +82,12 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    def stars():
-        stars = []
+    stars = []
     for _ in range(10):
         stars.append('*')
+    print(stars)
     return stars
-    print(make_10_stars())
+    
 
 
 def loops_1c(number_of_items=5, symbol="#"):
@@ -88,7 +100,10 @@ def loops_1c(number_of_items=5, symbol="#"):
     Remember that you're being passed arguments here. Don't hard code the number
     or the symbol, let it be whatever it wants to be.
     """
-    return None
+    return [symbol for _ in range(number_of_items)]
+    # Example usage:
+    result = loops_1c(5, '#')
+    print(result)
 
 
 def loops_2_preview():
@@ -101,8 +116,7 @@ def loops_2_preview():
             ['💩', '💩', '💩', '💩'],
             ['💩', '💩', '💩', '💩'],
             ['💩', '💩', '💩', '💩'],
-        
-    """
+    "
     field = []
     for i in range(4):
         row = []
@@ -110,6 +124,8 @@ def loops_2_preview():
             row.append("💩")
         field.append(row)
     return field
+    ""
+    return[["💩" for _ in range(4)] for _ in rage(4)]
 
 
 def loops_2():
@@ -128,9 +144,9 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
-          ]
+    
     """
-    return None
+    return [["*"] for _ in range(10)] for _ in range(10)]
 
 
 def loops_3():
@@ -152,9 +168,21 @@ def loops_3():
     remember that range(10) produces a list of numbers from 0...9
     So for every step produced by `for i in range(10):` i is a different number
     TIP: notice that this needs to to return strings of numbers,
-         so call str(number) to cast.
-    """
-    return None
+    so call str(number) to cast.
+    """Make a rising block of numbers."""
+    result = []
+    for i in range(10):  # Outer loop for rows
+        row = []
+        for j in range(10):  # Inner loop for columns
+            row.append(str(i))  # Append the string representation of i
+        result.append(row)  # Append each row to the result list
+    return result
+
+# Example usage:
+    result = loops_3()
+    for row in result:
+    print(row)
+
 
 
 def loops_4():
@@ -174,6 +202,20 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
+
+    result = []
+    for _ in range(10):
+        row = []
+        for j in range(10): 
+            row.append(str(j))  
+        result.append(row)  
+    return result
+
+# Example usage:
+result = loops_4()
+for row in result:
+    print(row)
+
     return None
 
 
@@ -193,7 +235,6 @@ def loops_5():
       ["(i8, j0)", "(i8, j1)", "(i8, j2)", "(i8, j3)", "(i8, j4)"],
       ["(i9, j0)", "(i9, j1)", "(i9, j2)", "(i9, j3)", "(i9, j4)"]
     ]
-
     TIP:
     If you've got num_bottles, e.g. num_bottles = 8
     You can construct strings either by concatinating them:
@@ -204,7 +245,15 @@ def loops_5():
         f"There are {num_bottles} green bottles"
     you'll come to see the pros and cons of each over time.
     """
-    return None
+    """Make the coordinates of the block."""
+    result = []
+    for i in range(10):  
+        row = []
+        for j in range(5):  
+            row.append(f"(i{i}, j{j})")  
+        result.append(row)  
+    return result
+
 
 
 def loops_6():
@@ -227,12 +276,19 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    return None
+    """Make a wedge of numbers."""
+    result = []
+    for i in range(10):  
+        row = []
+        for j in range(i + 1):  
+            row.append(str(j)) 
+        result.append(row)  
+    return result
+
 
 
 def loops_7():
     """Make a pyramid.
-
     Return this:
     [
         [' ', ' ', ' ', ' ', '*', ' ', ' ', ' ', ' '],
@@ -251,7 +307,18 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    return None
+    """Make a pyramid."""
+    result = []
+    n = 9  
+    for i in range(5):  
+        row = [' '] * n  
+        for j in range(i + 1):  
+            row[n // 2 - i + j] = '*'  
+            row[n // 2 + i - j] = '*'  
+        result.append(row) 
+    return result
+
+
 
 
 if __name__ == "__main__":

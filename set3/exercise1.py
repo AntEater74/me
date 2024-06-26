@@ -17,7 +17,12 @@ def loop_ranger(start, stop=None, step=1):
     Look up for how range() works in the python docs. You could  answer this
     with just the range function, but we'd like you to do it the long way.
     """
-    return None
+    result = []
+    current=start 
+    while current< stop:
+        result.append(current)
+        current += step
+    return result
 
 
 def two_step_ranger(start, stop):
@@ -28,7 +33,8 @@ def two_step_ranger(start, stop):
 
     You can either reuse loop_ranger, or the range function that in the standard library
     """
-    return None
+    return loop_ranger(start, stop, step=2)
+    
 
 
 def stubborn_asker(low, high):
@@ -39,8 +45,15 @@ def stubborn_asker(low, high):
 
     Look up the docs for a function called "input"
     """
-    return None
-
+    while True:
+        try:
+            number = float(input(f"Please enter a number between {low} and {high}: "))  # Ask the user for input
+            if low <= number <= high:  # Check if the number is within the desired bounds
+                return number  # Return the number if it's within bounds
+            else:
+                print(f"Number must be between {low} and {high}. Please try again.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
 
 def not_number_rejector(message):
     """Ask for a number repeatedly until actually given one.
@@ -49,6 +62,7 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
+    
     return None
 
 
@@ -69,6 +83,7 @@ if __name__ == "__main__":
     # NOTE: because some of these take user input you can't run them from
 
     print("\nloop_ranger", loop_ranger(1, 10, 2))
+    print("\nloop_ranger", loop_ranger(1000, 10000, 500))
     print("\ntwo_step_ranger", two_step_ranger(1, 10))
     print("\nstubborn_asker")
     stubborn_asker(30, 45)
