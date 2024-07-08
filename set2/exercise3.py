@@ -10,6 +10,9 @@ Modify each function until the tests pass.
 
 
 
+from numpy import take
+
+
 def is_odd(a_number):
     """Return True if a_number is odd, and False if a_number is even.
 
@@ -129,7 +132,7 @@ def loops_2_preview():
 
 
 def loops_2():
-    """Make a big square starfield.
+    #take a big square starfield.
 
     return a list of 10 items, each one a list of 10 items,
     each one of those, a string with exacly one star in it.
@@ -151,7 +154,6 @@ def loops_2():
 
 def loops_3():
     """Make a rising block of numbers.
-
     Return this:
     [
         ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
@@ -169,19 +171,14 @@ def loops_3():
     So for every step produced by `for i in range(10):` i is a different number
     TIP: notice that this needs to to return strings of numbers,
     so call str(number) to cast.
-    """Make a rising block of numbers."""
-    result = []
-    for i in range(10):  # Outer loop for rows
-        row = []
-        for j in range(10):  # Inner loop for columns
-            row.append(str(i))  # Append the string representation of i
-        result.append(row)  # Append each row to the result list
-    return result
-
-# Example usage:
-    result = loops_3()
-    for row in result:
-    print(row)
+    """
+    outer_list = []
+    for i in range(10):
+        inner_list = [] 
+        for j in range(10):
+            inner_list.append(str(i)) 
+        outer_list.append(inner_list)
+    return outer_list
 
 
 

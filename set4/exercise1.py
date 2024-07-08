@@ -77,7 +77,29 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &wordlength=
     """
+
+    base_url=https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength=20 
+
     pyramid = []
+    pyramid_list = [] 
+    for i in range(3, 21, 2):
+        url = base_url.format(length=1)
+        r = requests.get(url)
+        if r.status_code is 200:
+        message = r.text 
+        pyramid_list.append(message)
+    else:
+        print("failed a request", r.status_code, i)
+    for i in range(20, 3, -2):
+        url = base_url.format(length=i)
+        r = requests.get(url) 
+        if r.status_code is 200:
+            message = r.text
+            pyramid_list.append(message)
+    else:
+        print("failed a request", r.status_code, 1)
+        return pyramid_list 
+
 
     return pyramid
 
