@@ -1,0 +1,19 @@
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import os
+from datetime import datetime
+#%matplotlib inline
+plt.rcParams["figure.figsize"] = (10, 5)
+saved_style_state = matplotlib.rcParams.copy() 
+if os.path.isfile("car_fuel_consumption.csv"):
+    filepath = "car_fuel_consumption.csv"
+    print("loading from file")
+else:
+    filepath = "https://www.kaggle.com/datasets/epa/fuel-economy"
+    print("loading from the internet")
+
+fuel_consumption = pd.read_csv(filepath)
+print("done")
+
