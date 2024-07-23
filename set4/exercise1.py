@@ -29,18 +29,47 @@ def get_some_details():
     Return a new dictionary that just has the last name, password, and the
     number you get when you add the postcode to the id-value.
     TIP: Make sure that you add the numbers, not concatinate the strings.
-         E.g. 2000 + 3000 = 5000 not 20003000
+        E.g. 2000 + 3000 = 5000 not 20003000
     TIP: Keep a close eye on the format you get back. JSON is nested, so you
-         might need to go deep. E.g to get the name title you would need to:
-         data["results"][0]["name"]["title"]
-         Look out for the type of brackets. [] means list and {} means
-         dictionary, you'll need integer indeces for lists, and named keys for
-         dictionaries.
+        might need to go deep. E.g to get the name title you would need to:
+        data["results"][0]["name"]["title"]
+        Look out for the type of brackets. [] means list and {} means
+        dictionary, you'll need integer indeces for lists, and named keys for
+        dictionaries.
     """
     json_data = open(LOCAL + "/lazyduck.json").read()
+import json
 
-    data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
+def parse_json():
+    # Read the JSON file
+    with open('lazyduck.json', 'r') as json_file:
+        data = json.load(json_file)
+    
+    # Extract the required information
+    last_name = data["results"][0]["name"]["last"]
+    password = data["results"][0]["login"]["password"]
+    postcode = data["results"][0]["location"]["postcode"]
+    user_id = data["results"][0]["id"]["value"]
+    
+    # Convert postcode and user_id to integers and compute the sum
+    postcode_number = int(postcode)
+    user_id_number = int(user_id)
+    postcode_plus_id = postcode_number + user_id_number
+    
+    # Create a new dictionary with the required information
+    parse_json = {
+        "last_name": last_name,
+        "password": password,
+        "postcode_plus_id": postcode_plus_id
+    }
+    
+    return parse_json
+result = parse_json()
+print(result) 
+
+
+data = json.loads(json_data)
+return {"lastName": None, "password": None, "postcodePlusID": None}
 
 
 def wordy_pyramid():
@@ -161,7 +190,6 @@ def diarist():
                 count_m10_p1 += 1
     with open('Set4/lasers.pew', 'w') as output_file:
         output_file.write(str(count_m10_p1))
-
 
 
 
