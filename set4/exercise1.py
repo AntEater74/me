@@ -81,13 +81,13 @@ def wordy_pyramid():
     base_url=https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength=20 
 
     pyramid = []
-    pyramid_list = [] 
+    wordy_pyramid = [] 
     for i in range(3, 21, 2):
         url = base_url.format(length=1)
         r = requests.get(url)
         if r.status_code is 200:
-        message = r.text 
-        pyramid_list.append(message)
+            message = r.text
+        wordy_pyramid.append(message)
     else:
         print("failed a request", r.status_code, i)
     for i in range(20, 3, -2):
@@ -95,13 +95,11 @@ def wordy_pyramid():
         r = requests.get(url) 
         if r.status_code is 200:
             message = r.text
-            pyramid_list.append(message)
+            wordy_pyramid.append(message)
     else:
         print("failed a request", r.status_code, 1)
-        return pyramid_list 
+        return wordy_pyramid
 
-
-    return pyramid
 
 
 def pokedex(low=1, high=5):
@@ -113,18 +111,38 @@ def pokedex(low=1, high=5):
     Parse the json and extract the values needed.
 
     TIP: reading json can someimes be a bit confusing. Use a tool like
-         http://www.jsoneditoronline.org/ to help you see what's going on.
+    http://www.jsoneditoronline.org/ to help you see what's going on.
     TIP: these long json accessors base["thing"]["otherThing"] and so on, can
-         get very long. If you are accessing a thing often, assign it to a
-         variable and then future access will be easier.
+    get very long. If you are accessing a thing often, assign it to a
+    variable and then future access will be easier.
     """
-    id = 5
-    url = f"https://pokeapi.co/api/v2/pokemon/{id}"
-    r = requests.get(url)
-    if r.status_code is 200:
-        the_json = json.loads(r.text)
+import requests
 
-    return {"name": None, "weight": None, "height": None}
+def pokedex(low=1, high=5):
+    tallest_name = ""
+    tallest_height = 0
+    tallest_weight = 0
+
+    for pokemon_id in range(low, high + 1):
+        url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_id}"
+
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            pokemon_data = response.json()
+
+            name = pokemon_data['name']
+            height = pokemon_data['height']
+            weight = pokemon_data['weight']
+
+            if height > tallest_height:
+                tallest_name = name
+                tallest_height = height
+                tallest_weight = weight
+
+    return tallest_name, tallest_height, tallest_weight
+    return pokedex
+
 
 
 def diarist():
@@ -136,10 +154,10 @@ def diarist():
 
     TIP: you need to write a string, so you'll need to cast your number
     TIP: Trispokedovetiles(laser).gcode uses windows style line endings. CRLF
-         not just LF like unix does now. If your comparison is failing this
-         might be why. Try in rather than == and that might help.
+    not just LF like unix does now. If your comparison is failing this
+    might be why. Try in rather than == and that might help.
     TIP: remember to commit 'lasers.pew' and push it to your repo, otherwise
-         the test will have nothing to look at.
+    the test will have nothing to look at.
     TIP: this might come in handy if you need to hack a 3d print file in the future.
 
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
