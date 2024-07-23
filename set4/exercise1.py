@@ -153,7 +153,16 @@ def diarist():
 
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
     """
-    pass
+    count_m10_p1 = 0
+    
+    with open('Trispokedovetiles(laser).gcode', 'r', newline='') as file:
+        for line in file:
+            if "M10 P1" in line:
+                count_m10_p1 += 1
+    with open('Set4/lasers.pew', 'w') as output_file:
+        output_file.write(str(count_m10_p1))
+    p
+
 
 
 if __name__ == "__main__":
@@ -176,3 +185,4 @@ if __name__ == "__main__":
         )
     elif in_set4:
         print("lasers.pew is in the right place")
+
