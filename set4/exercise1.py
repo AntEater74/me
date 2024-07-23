@@ -116,31 +116,22 @@ def pokedex(low=1, high=5):
     get very long. If you are accessing a thing often, assign it to a
     variable and then future access will be easier.
     """
-import requests
-
-def pokedex(low=1, high=5):
+    import requests
     tallest_name = ""
     tallest_height = 0
     tallest_weight = 0
-
     for pokemon_id in range(low, high + 1):
         url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_id}"
-
         response = requests.get(url)
-
         if response.status_code == 200:
             pokemon_data = response.json()
-
             name = pokemon_data['name']
             height = pokemon_data['height']
             weight = pokemon_data['weight']
-
             if height > tallest_height:
                 tallest_name = name
                 tallest_height = height
                 tallest_weight = weight
-
-    return tallest_name, tallest_height, tallest_weight
     return pokedex
 
 
