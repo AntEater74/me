@@ -161,7 +161,7 @@ def diarist():
                 count_m10_p1 += 1
     with open('Set4/lasers.pew', 'w') as output_file:
         output_file.write(str(count_m10_p1))
-    p
+
 
 
 
