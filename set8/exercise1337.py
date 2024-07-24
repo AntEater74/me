@@ -86,8 +86,7 @@ def n_counter(search_for_this, input_list=[1, 4, 1, 5, 1, 1]) -> int:
     """Count the number of times search_for_this shows up in the input_list.
     Return an integer.
     """
-    count = None
-
+    count = input_list.count(search_for_this)
     return count
 
 
@@ -96,7 +95,7 @@ def fizz_buzz() -> list:
 
     This is the most famous basic programming test of all time!
 
-       "Write a program that prints the numbers from 1 to 100. But for
+    "Write a program that prints the numbers from 1 to 100. But for
         multiples of three print "Fizz" instead of the number and for
         the multiples of five print "Buzz". For numbers which are
         multiples of both three and five print "FizzBuzz"."
@@ -106,12 +105,20 @@ def fizz_buzz() -> list:
     Return a list that has an integer if the number isn't special,
     and a string if it is. E.g.
         [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8,
-         'Fizz', 'Buzz',  11, 'Fizz', 13, 14,
-         'FizzBuzz', 16, 17, ...]
+        'Fizz', 'Buzz',  11, 'Fizz', 13, 14,
+        'FizzBuzz', 16, 17, ...]
     """
     fizz_buzz_list = []
-    # your code here
-
+    for num in range(1,101):
+        if num % 3 == 0 and num % 5 == 0:
+            fizz_buzz_list.append("FizzBuzz")
+        elif num % 3 == 0:
+            fizz_buzz_list.append("Fizz")
+        elif num % 5 == 0:
+            fizz_buzz_list.append("Buzz")
+        else:
+            fizz_buzz_list.append(num)
+    print (fizz_buzz_list)
     return fizz_buzz_list
 
 
@@ -126,8 +133,12 @@ def set_it_on_fire(input_string="very naughty boy") -> str:
     TIP: consider using the 'join' method in Python.
     TIP: make sure that you have a 🔥 on both ends of the string.
     """
+    input_string_upper = input_string.upper()
+    interleaved_list = ['🔥' + char for char in input_string_upper]
+    set_it_on_fire = ''.join(interleaved_list) + '🔥'
+    print (set_it_on_fire)
+    return set_it_on_fire
 
-    return None
 
 
 def the_chain_gang_5(the_value) -> bool:
@@ -140,8 +151,9 @@ def the_chain_gang_5(the_value) -> bool:
     TIP: you've already written a function that returns True if the value is 5
     TIP: you've already written a function that subtracts 5
     """
+    give_me_five = take_five(the_value)
+    return is_it_5(give_me_five)
 
-    return None
 
 
 def pet_filter(letter="a") -> list:
@@ -158,8 +170,7 @@ def pet_filter(letter="a") -> list:
         "fancy rat and lab rat", "mink", "red fox", "hedgehog", "guppy"
     ]
     # fmt: on
-    filtered = []
-
+    filtered = [pet for pet in pets if letter in pet]
     return filtered
 
 
@@ -172,11 +183,19 @@ def best_letter_for_pets() -> str:
     TIP: you've seen this before in the pokedex.
     """
     import string
-
     the_alphabet = string.ascii_lowercase
-    most_popular_letter = ""
-
-    return most_popular_letter
+    max_pets_count = 0
+    best_letter = ""
+    
+    for letter in the_alphabet:
+        pets_with_letter = pet_filter(letter)
+        num_pets = len(pets_with_letter)
+        
+        if num_pets > max_pets_count:
+            max_pets_count = num_pets
+            best_letter = letter
+    
+    return best_letter
 
 
 def make_filler_text_dictionary() -> dict:
@@ -203,11 +222,22 @@ def make_filler_text_dictionary() -> dict:
     (i.e. 3, 4, 5, 6, 7 and 4 words for each)
     TIP: you'll need the requests library
     """
-
+    import requests
     url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength="
     wd = {}
+    
+    for length in range(3,8): 
+        word_list = []
+        for _ in range(4):
+            response = requests.get(url + str(length))
+            if response.status_code == 200: 
+                word_list.append(response.text)
+            else:
+                print(f"failed to retrieve words of length {length}")
+        wd[length] = word_list 
 
     return wd
+
 
 
 def random_filler_text(number_of_words=200) -> str:
@@ -245,8 +275,25 @@ def fast_filler(number_of_words=200) -> str:
     """
 
     fname = "dict_cache.json"
+    if os.path.exists(fname):
+        with open(fname, "r") as file:
+            word_dict = json.load(file)
+            word_dict = {int(k): v for k, v in word_dict.items()}
+    else:
+        word_dict = make_filler_text_dictionary()
+        with open(fname, "w") as file:
+            json.dump(word_dict,file)
+    
+    words = [] 
+    for _ in range(number_of_words): 
+        word_length = random.randint(3,7) 
+        word = random.choice(word_dict[word_length])
+        words.append(word)
+    
+    paragraph = " ".join(words)
+    paragraph = paragraph.capitalize() + "."
 
-    return None
+    return paragraph
 
 
 if __name__ == "__main__":
