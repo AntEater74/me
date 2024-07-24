@@ -92,10 +92,10 @@ def shout_with_a_number(a_string, a_number):
     'HELLO 42'
 
     HINT: Lookup how to cast a_number to a string or lookup how to use
-          string formatting in python.
-          There are a few ways to do this, so if you're looking for a
-          challenge, see if you can make the test pass with at least two ways
-          of doing the same job.
+        string formatting in python.
+        There are a few ways to do this, so if you're looking for a
+        challenge, see if you can make the test pass with at least two ways
+        of doing the same job.
     """
     the_answer = a_string.upper()+ ' ' +str(a_number)
     return the_answer
@@ -108,15 +108,15 @@ if __name__ == "__main__":
         from helper import minitest
         print(
             """
-              This section does a quick test on your results and prints them nicely
-              It's NOT the official tests, they are in tests.py as usual.
-              Add to these tests if you want, give them arguments etc. to make sure that your
-              code is robust to the situations that you'll see in action.
+            This section does a quick test on your results and prints them nicely
+            It's NOT the official tests, they are in tests.py as usual.
+            Add to these tests if you want, give them arguments etc. to make sure that your
+            code is robust to the situations that you'll see in action.
     
-              the format is: minitest(function_name, [list, of, arguments], expected_result)
+            the format is: minitest(function_name, [list, of, arguments], expected_result)
     
-              REMEMBER: these aren't the tests that you submit, these are just
-              there to keep you sane."""
+            REMEMBER: these aren't the tests that you submit, these are just
+            there to keep you sane."""
         )
     
         minitest(add_1, [1], 2)
