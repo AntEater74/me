@@ -81,7 +81,19 @@ def super_asker(low, high):
     to make a function that does it all!
     """
     
-    return None
+    while True:
+        try:
+            number = input(f"Please enter a number between {low} and {high}: ")
+            number = float(number)  # Attempt to convert input to a float
+            
+            if low <= number <= high:
+                return number  # Return the number if it's within the range
+            else:
+                print(f"Number must be between {low} and {high}. Please try again.")
+        
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+        return super_asker
 
 
 if __name__ == "__main__":
