@@ -38,9 +38,7 @@ def get_some_details():
         dictionaries.
     """
     json_data = open(LOCAL + "/lazyduck.json").read()
-import json
-
-def parse_json():
+    import json
     # Read the JSON file
     with open('lazyduck.json', 'r') as json_file:
         data = json.load(json_file)
@@ -57,15 +55,13 @@ def parse_json():
     postcode_plus_id = postcode_number + user_id_number
     
     # Create a new dictionary with the required information
-    parse_json = {
+    get_some_details = {
         "last_name": last_name,
         "password": password,
         "postcode_plus_id": postcode_plus_id
     }
     
-    return parse_json
-result = parse_json()
-print(result) 
+    return get_some_details
 
 
 data = json.loads(json_data)
