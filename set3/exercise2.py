@@ -35,8 +35,7 @@ def exampleGuessingGame():
             print("Too small, try again :'(")
         else:
             print("Too big, try again :'(")
-    return "You got it!"
-
+    return exampleGuessingGame 
 
 if __name__ == "__main__":
     exampleGuessingGame()
