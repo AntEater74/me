@@ -30,7 +30,6 @@ def advancedGuessingGame():
     """
     import random
     
-    988
     while True:
         try:
             lower_bound = int(input("Enter the lower bound for the guessing range: "))
